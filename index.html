@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Fresh</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .contact {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #EAD8B1;
+            text-align: center;
+            padding: 18px;
+        }
+
+        .logo .fresh {
+            color: #001F3F;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 98%;
+            padding: 20px;
+            background-color: #001F3F;
+            color: #fff;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 20px;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .text-block {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            max-width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h4 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        /* Tampilan jenis ikan dan perawatan */
+        .featured-section, .care-tips-section {
+            margin: 40px 20px;
+            text-align: center;
+        }
+
+        .fish-species, .care-tips {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .fish-card, .tip-card {
+            text-decoration: none;
+            width: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fish-card img, .tip-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .fish-card p, .tip-card p {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .fish-card:hover, .tip-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /*Tentang Kami */
+        #tentang-kami {
+            margin: 30px 15px;
+            text-align: left;
+            line-height: 1.8;
+        }
+        #tentang-kami-container {
+            background-color: #f4f4f9;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px; /* lebar maksimal */
+            margin: 0 auto; /* jarak kanan dan kiri otomatis */
+        }
+
+        #tentang-kami h1, #tentang-kami h2 {
+            text-align: center;
+            color: #022344;
+        }
+
+        #tentang-kami p {
+            margin: 10px 0;
+        }
+
+        #tentang-kami ul {
+            margin: 20px;
+            padding: 0;
+            list-style: disc;
+        }
+
+        #tentang-kami ul li {
+            margin: 10px 0;
+        }
+
+        /* Hubungi Kami */
+        #hubungi-kami {
+            margin: 40px 20px;
+            background-color: #f4f4f9;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        #hubungi-kami h2 {
+            color: #001F3F;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #hubungi-kami p {
+            margin: 10px 0;
+        }
+
+        #hubungi-kami a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: thick;
+        }
+        #hubungi-kami a:hover {
+            text-decoration: underline;
+        }
+
+        #hubungi-kami ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #hubungi-kami ul li {
+            margin: 10px 0;
+        }
+        .social-media {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #komentar {
+            margin: 40px auto;
+            max-width: 800px;
+            background-color: #f4f4f9;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        #komentar h2 {
+            text-align: center;
+            color: #001F3F;
+            margin-bottom: 10px;
+        }
+    
+        #komentar p {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    
+        #commentForm textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            resize: vertical;
+        }
+    
+        #commentForm button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #001F3F;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+    
+        #commentForm button:hover {
+            background-color: #004080;
+        }
+    
+        #commentList {
+            margin-top: 20px;
+        }
+    
+        #commentList h3 {
+            margin-bottom: 10px;
+            color: #001F3F;
+        }
+    
+        #commentList ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        #commentList ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        footer {
+            background-color: #001F3F;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="home" class="logo">Aqua <span class="fresh">Peem</span></div>
+    <nav class="nav">
+        <a href="#home">HOME</a>
+        <a href="#jenis-ikan">JENIS IKAN</a>
+        <a href="#perawatan-ikan">PERAWATAN IKAN</a>
+        <a href="#tentang-kami">TENTANG KAMI</a>
+        <a href="#hubungi-kami">HUBUNGI KAMI</a>
+    </nav>
+    <div class="container">
+        <img src="Media/ikan.png" alt="Gambar" style="height: 500px; width: auto;">
+        <div class="text-block">
+            <h4>Welcome to Aquapeem</h4>
+            <p>Your go-to guide for fish species, care tips, and more</p>
+        </div>
+    </div>
+
+    <div id="jenis-ikan" class="featured-section">
+        <h2>Jenis Ikan</h2>
+        <div class="fish-species">
+            <a href="Jenis/jenismolly.html" class="fish-card">
+                <img src="Media/mollyyy.jpg" alt="Molly">
+                <p>Molly</p>
+            </a>
+            <a href="Jenis/jenisbetta.html" class="fish-card">
+                <img src="Media/cupang.jpg" alt="Betta">
+                <p>Betta</p>
+            </a>
+            <a href="Jenis/jenisguppy.html" class="fish-card">
+                <img src="Media/guppy.jpg" alt="Guppy">
+                <p>Guppy</p>
+            </a>
+        </div>
+    </div>
+
+    <div id="perawatan-ikan" class="care-tips-section">
+        <h2>Perawatan Ikan</h2>
+        <div class="care-tips">
+            <a href="Perawatan/pkualitasair.html" class="tip-card">
+                <img src="Media/air.jpg" alt="Kualitas Air">
+                <p>Menjaga Kualitas Air</p>
+            </a>
+            <a href="Perawatan/ppakanygtepat.html" class="tip-card">
+                <img src="Media/pakan.jpg" alt="Feeding Your Fish">
+                <p>Memberikan Makanan Yang Tepat</p>
+            </a>
+            <a href="Perawatan/ppencegahanpenyakit.html" class="tip-card">
+                <img src="Media/penyakit.jpg" alt="Pencegahan">
+                <p>Pencegahan Penyakit</p>
+            </a>
+        </div>
+    </div>
+
+    <div id="tentang-kami">
+        <div id="tentang-kami-container">
+        <h1 text-al>Tentang Kami</h1>
+        <p>Selamat datang di <strong>AquaPeem</strong>!</p>
+        <p>Kami adalah platform yang didedikasikan untuk pecinta ikan, baik pemula maupun yang sudah berpengalaman. Website ini dirancang untuk memberikan informasi lengkap dan bermanfaat tentang berbagai jenis ikan hias, seperti <strong>guppy, molly, dan betta</strong>, serta panduan praktis tentang cara merawat mereka dengan baik.</p>
+
+        <h2>Misi Kami</h2>
+        <p>Kami ingin membantu Anda memahami keunikan setiap jenis ikan dan memberikan pengetahuan yang dibutuhkan untuk memastikan ikan-ikan Anda tumbuh sehat, indah, dan bahagia.</p>
+
+        <h2>Apa yang Kami Tawarkan?</h2>
+        <ul>
+            <li>Informasi mendalam tentang berbagai <strong>jenis ikan hias</strong>, mulai dari karakteristik hingga perilaku mereka.</li>
+            <li>Panduan lengkap tentang <strong>cara merawat ikan</strong>, termasuk menjaga kualitas air, memilih pakan yang tepat, dan mencegah serta menangani penyakit ikan.</li>
+            <li>Tips dan trik praktis untuk menciptakan ekosistem akuarium yang ideal di rumah Anda.</li>
+        </ul>
+
+        <p>Kami percaya bahwa hobi memelihara ikan tidak hanya membawa kesenangan, tetapi juga membantu menciptakan suasana yang tenang dan harmonis di rumah Anda.</p>
+
+        <p>Mari bergabung dengan komunitas kami dan jelajahi dunia ikan hias bersama! Jika Anda memiliki pertanyaan, saran, atau ingin berbagi pengalaman, jangan ragu untuk menghubungi kami melalui halaman <a href="#hubungi-kami">Kontak Kami</a>.</p>
+
+        <p>Salam hangat,</p>
+        <p><strong>Rafi Zainul :)</strong></p>
+    </div>
+    </div>
+
+    <div id="hubungi-kami">
+        <h2>Hubungi Kami</h2>
+        <ul>
+            <li><strong>Alamat:</strong> Jl. Ikan Hias No. 23, Jakarta Selatan, Indonesia</li>
+            <li><strong>Nomor Telepon:</strong> <a href="tel:+62123456789">+62 123-456-789</a></li>
+            <li><strong>Email:</strong> <a href="mailto:rafimtqn@gmail.com">aquapeem@gmail.com</a></li>
+            <li><strong>Media Sosial:</strong></li>
+            <div class="social-media">
+                <a href="https://facebook.com/aquapeem" target="_blank">Facebook</a>
+                <a href="https://instagram.com/aquapeem" target="_blank">Instagram</a>
+                <a href="https://youtube.com/aquapeem" target="_blank">Youtube</a>
+            </div>
+        </ul>
+        <pre>________________________________________________________________________________________________________________</pre>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.379631531725!2d106.85993567445274!3d-6.213560993774348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f53ff2536253%3A0x5cf857e12dfe769a!2sPasar%20Ikan%20Hias%20Jatinegara!5e0!3m2!1sid!2sid!4v1733690133605!5m2!1sid!2sid">
+            </iframe>
+            <p></p>
+            <a href="#komentar">*Kritik dan Saran</a>
+        </div>
+    </div>
+    <div class="content5" id="komentar">
+        <h2>Kritik dan Saran</h2>
+        <p>Isi Kritik dan Saran Anda di sini!</p>
+        <form id="commentForm">
+            <textarea id="commentBox" placeholder="Tuliskan kritik dan saran Anda..." rows="5"></textarea>
+            <button type="button" id="submitComment">Kirim</button>
+        </form>
+        <div id="commentList">
+            <h3>Kritik dan Saran Anda:</h3>
+            <ul></ul>
+        </div>
+    </div>
+    <script>
+    const commentForm = document.getElementById("commentForm");
+    const commentBox = document.getElementById("commentBox");
+    const commentList = document.getElementById("commentList").querySelector("ul");
+
+    document.getElementById("submitComment").addEventListener("click", () => {
+        const commentText = commentBox.value.trim();
+        if (commentText) {
+            const newComment = document.createElement("li");
+            newComment.textContent = commentText;
+            newComment.style.marginBottom = "10px";
+            newComment.style.padding = "10px";
+            newComment.style.backgroundColor = "#001F3F"; // Warna biru gelap
+            newComment.style.borderRadius = "8px";
+            newComment.style.color = "#ffffff"; // Teks putih
+            newComment.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+            commentList.appendChild(newComment);
+            commentBox.value = "";
+
+            // Tampilkan pop-up "Terima Kasih"
+            showThankYouPopup();
+        } else {
+            alert("Komentar tidak boleh kosong!");
+        }
+    });
+
+    // Fungsi untuk menampilkan pop-up "Terima Kasih"
+    function showThankYouPopup() {
+        const popup = document.createElement("div");
+        popup.textContent = "Terima Kasih atas kritik dan saran Anda!";
+        popup.style.position = "fixed";
+        popup.style.top = "80px"; /* Jarak dari atas navbar */
+        popup.style.left = "50%";
+        popup.style.transform = "translateX(-50%)";
+        popup.style.backgroundColor = "#001F3F"; /* Warna selaras dengan tema */
+        popup.style.color = "white";
+        popup.style.padding = "15px 30px";
+        popup.style.borderRadius = "12px";
+        popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.3)";
+        popup.style.zIndex = "1000";
+        popup.style.textAlign = "center";
+        popup.style.fontSize = "16px";
+        popup.style.fontWeight = "bold";
+
+        // Tambahkan pop-up ke body
+        document.body.appendChild(popup);
+
+        // Hapus pop-up setelah 3 detik
+        setTimeout(() => {
+            document.body.removeChild(popup);
+        }, 3000);
+    }
+</script>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; 2024 AquaPeem.</p>
+        </div>
+        <a href="sitemap/sitemap.html" color="white">Sitemap</a>
+    </footer>
+</body>
+</html>
